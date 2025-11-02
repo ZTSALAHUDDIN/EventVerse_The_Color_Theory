@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- FULL SCREEN WELCOME ANIMATION -->
+    <!-- WELCOME ANIMATION SCREEN -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-background">
             <div class="floating-particle p1"></div>
@@ -43,7 +43,7 @@
         <div class="success-content">
             <div class="success-checkmark">✓</div>
             <h2>Registration Successful!</h2>
-            <p id="successMessage">You have been successfully registered for EventVerse!</p>
+            <p id="successMessage">You have been successfully registered!</p>
             <button class="btn btn-primary" onclick="closeSuccessPopup()">Continue</button>
         </div>
     </div>
@@ -60,6 +60,7 @@
                 <li><a href="#schedule" class="nav-link">Schedule</a></li>
                 <li><a href="#sponsors" class="nav-link">Sponsors</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#team" class="nav-link">Meet the Team</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
                 <li><a href="#register" class="nav-link">Register</a></li>
             </ul>
@@ -83,7 +84,6 @@
                 <h1 class="hero-title">EVENTVERSE</h1>
                 <p class="hero-tagline">Experience the Future of Tech</p>
                 
-                <!-- COUNTDOWN TIMER -->
                 <div class="countdown-box">
                     <h3>Tech Fest Launches In</h3>
                     <div class="countdown" id="countdown">
@@ -106,12 +106,11 @@
                     </div>
                 </div>
 
-                <!-- TOTAL PRIZE POOL DISPLAY -->
                 <div class="prize-banner">
                     <div class="prize-trophy">🏆</div>
                     <div class="prize-info">
                         <span class="prize-label">Total Prize Pool</span>
-                        <span class="prize-total" id="totalPrize">₹10,85,000+</span>
+                        <span class="prize-total" id="totalPrize">₹10,00,000+</span>
                     </div>
                 </div>
 
@@ -136,7 +135,7 @@
             </div>
 
             <div class="search-container">
-                <input type="text" class="search-bar" id="searchBar" placeholder="🔍 Search events by name or category...">
+                <input type="text" class="search-bar" id="searchBar" placeholder="🔍 Search events...">
             </div>
 
             <div class="filters">
@@ -148,7 +147,7 @@
             </div>
 
             <div class="events-grid" id="eventsGrid">
-                <!-- Events will be rendered here -->
+                <!-- Events rendered here -->
             </div>
         </section>
 
@@ -168,7 +167,7 @@
                     </tr>
                 </thead>
                 <tbody id="scheduleBody">
-                    <!-- Schedule will be rendered here -->
+                    <!-- Schedule rendered here -->
                 </tbody>
             </table>
         </section>
@@ -180,7 +179,7 @@
                 <p>Proudly Powered by Industry Leaders</p>
             </div>
             <div class="sponsors-grid" id="sponsorsGrid">
-                <!-- Sponsors will be rendered here -->
+                <!-- Sponsors rendered here -->
             </div>
         </section>
 
@@ -191,7 +190,127 @@
                 <p>Hear from previous participants</p>
             </div>
             <div class="testimonials-grid" id="testimonialsGrid">
-                <!-- Testimonials will be rendered here -->
+                <!-- Testimonials rendered here -->
+            </div>
+        </section>
+
+        <!-- TEAM SECTION -->
+        <section class="team" id="team">
+            <div class="section-title">
+                <h2>Meet the Team</h2>
+                <p>The brilliant minds behind EventVerse</p>
+            </div>
+            
+            <div class="team-container">
+                <div class="team-subsection">
+                    <h3 class="team-subsection-title">Festival Organisers</h3>
+                    <div class="team-grid" id="organisersGrid">
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="EventVerse_The_Color_Theory/images/organiser1.jpg" alt="Sarah Chen" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Sarah Chen</div>
+                                <div class="team-role">Event Director</div>
+                                <div class="team-description">Visionary leader with 8+ years in tech events</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">gh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="images/organiser2.jpg" alt="Raj Patel" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Raj Patel</div>
+                                <div class="team-role">Operations Lead</div>
+                                <div class="team-description">Expert in logistics and event coordination</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">tw</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="images/organiser3.jpg" alt="Maya Singh" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Maya Singh</div>
+                                <div class="team-role">Creative Head</div>
+                                <div class="team-description">Designer and brand strategist extraordinaire</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">ig</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-subsection">
+                    <h3 class="team-subsection-title">Core Team</h3>
+                    <div class="team-grid" id="coreTeamGrid">
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="images/team1.jpg" alt="Alex Kumar" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Alex Kumar</div>
+                                <div class="team-role">Technical Lead</div>
+                                <div class="team-description">Full-stack developer and tech enthusiast</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">gh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="images/team2.jpg" alt="Priya Sharma" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Priya Sharma</div>
+                                <div class="team-role">Community Manager</div>
+                                <div class="team-description">Passionate about building communities</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">tw</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="images/team3.jpg" alt="Vikram Das" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Vikram Das</div>
+                                <div class="team-role">Marketing Specialist</div>
+                                <div class="team-description">Strategic marketer and brand advocate</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">ig</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image-container">
+                                <img src="images/team4.jpg" alt="Zara Khan" class="team-image">
+                            </div>
+                            <div class="team-info">
+                                <div class="team-name">Zara Khan</div>
+                                <div class="team-role">Finance Manager</div>
+                                <div class="team-description">Budget analyst and financial strategist</div>
+                                <div class="team-social">
+                                    <a href="#" class="team-social-link">in</a>
+                                    <a href="#" class="team-social-link">tw</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -202,7 +321,7 @@
                 <p>Get your answers here</p>
             </div>
             <div class="faq-container" id="faqContainer">
-                <!-- FAQ will be rendered here -->
+                <!-- FAQ rendered here -->
             </div>
         </section>
 
@@ -238,11 +357,9 @@
 
                     <div class="form-group full-width">
                         <label>Select Events (Multiple) *</label>
-                        <div class="event-select-wrapper">
-                            <select id="eventSelect" multiple required>
-                                <!-- Options will be populated by JS -->
-                            </select>
-                            <div class="select-hint">💡 Hold Ctrl/Cmd to select multiple events</div>
+                        <!-- Replaced dropdown with user-friendly checkbox grid -->
+                        <div class="events-checkbox-container" id="eventsCheckboxContainer">
+                            <!-- Checkboxes populated by JS -->
                         </div>
                         <div class="selected-events-display" id="selectedEventsDisplay"></div>
                     </div>
@@ -265,9 +382,7 @@
     <div class="modal" id="eventModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div id="modalBody">
-                <!-- Content will be loaded here -->
-            </div>
+            <div id="modalBody"></div>
         </div>
     </div>
 

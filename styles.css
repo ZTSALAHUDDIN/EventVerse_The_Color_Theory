@@ -25,6 +25,45 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Add subtle graffiti background effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      15deg,
+      transparent 24%,
+      rgba(0, 255, 255, 0.05) 25%,
+      rgba(0, 255, 255, 0.05) 26%,
+      transparent 27%,
+      transparent 74%,
+      rgba(0, 255, 255, 0.05) 75%,
+      rgba(0, 255, 255, 0.05) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      15deg,
+      transparent 24%,
+      rgba(255, 0, 255, 0.03) 25%,
+      rgba(255, 0, 255, 0.03) 26%,
+      transparent 27%,
+      transparent 74%,
+      rgba(255, 0, 255, 0.03) 75%,
+      rgba(255, 0, 255, 0.03) 76%,
+      transparent 77%,
+      transparent
+    );
+  background-size: 50px 50px;
+  background-position: 0 0, 10px 10px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ===== WELCOME SCREEN ===== */
@@ -516,7 +555,6 @@ main {
   left: 10%;
   animation: glowFloat 8s ease-in-out infinite;
 }
-
 .glow-2 {
   width: 250px;
   height: 250px;
@@ -525,7 +563,6 @@ main {
   right: 10%;
   animation: glowFloat 10s ease-in-out infinite 1s;
 }
-
 .glow-3 {
   width: 200px;
   height: 200px;
@@ -580,89 +617,72 @@ main {
 }
 
 .countdown-box {
-  background: rgba(0, 255, 255, 0.08);
-  border: 2px solid var(--primary);
-  padding: 2rem;
-  border-radius: 15px;
-  margin: 2rem 0;
+  background: rgba(0, 255, 255, 0.12);
+  border: 3px solid var(--primary);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin: 3rem auto;
   animation: fadeInUp 1.5s ease-out;
+  max-width: 800px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
 }
 
 .countdown-box h3 {
   color: var(--accent);
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .countdown {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
 }
 
 .countdown-item {
-  background: rgba(255, 0, 255, 0.1);
-  border: 2px solid var(--secondary);
-  padding: 1rem;
-  border-radius: 10px;
+  background: rgba(255, 0, 255, 0.15);
+  border: 3px solid var(--secondary);
+  padding: 1.5rem;
+  border-radius: 15px;
   animation: pulseBorder 2s infinite;
-}
-
-@keyframes pulseBorder {
-  0%,
-  100% {
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-  }
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
 }
 
 .countdown-num {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
   color: var(--primary);
-  text-shadow: 0 0 20px var(--primary);
+  text-shadow: 0 0 30px var(--primary);
   display: block;
 }
 
 .countdown-label {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .prize-banner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 255, 0, 0.08) 100%);
-  border: 3px solid var(--accent);
-  padding: 2rem 3rem;
-  border-radius: 20px;
-  margin: 2.5rem auto;
+  gap: 2.5rem;
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 255, 0, 0.1) 100%);
+  border: 4px solid var(--accent);
+  padding: 2.5rem 3.5rem;
+  border-radius: 25px;
+  margin: 3rem auto;
   animation: fadeInUp 1.6s ease-out;
-  box-shadow: 0 0 50px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(0, 255, 0, 0.1);
-  max-width: 500px;
+  box-shadow: 0 0 70px rgba(0, 255, 0, 0.4), inset 0 0 40px rgba(0, 255, 0, 0.15);
+  max-width: 550px;
 }
 
 .prize-trophy {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   animation: trophyBounce 1s ease-in-out infinite;
-}
-
-@keyframes trophyBounce {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
 }
 
 .prize-label {
@@ -670,29 +690,18 @@ main {
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 0.9rem;
-  text-shadow: 0 0 20px var(--accent);
+  font-size: 1.1rem;
+  text-shadow: 0 0 25px var(--accent);
+  font-weight: bold;
 }
 
 .prize-total {
   display: block;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: var(--accent);
-  text-shadow: 0 0 40px var(--accent), 0 0 80px rgba(0, 255, 0, 0.4);
+  text-shadow: 0 0 50px var(--accent), 0 0 100px rgba(0, 255, 0, 0.5);
   animation: prizeGlow 2s ease-in-out infinite;
-}
-
-@keyframes prizeGlow {
-  0%,
-  100% {
-    text-shadow: 0 0 40px var(--accent), 0 0 60px rgba(0, 255, 0, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    text-shadow: 0 0 60px var(--accent), 0 0 100px rgba(0, 255, 0, 0.5);
-    transform: scale(1.05);
-  }
 }
 
 .hero-buttons {
@@ -871,6 +880,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .event-card {
@@ -973,21 +983,68 @@ main {
   position: relative;
   z-index: 3;
   margin-top: auto;
+  padding-bottom: 1rem;
 }
 
 .event-card-btn {
   width: 100%;
-  margin-top: 1.5rem;
   position: relative;
   z-index: 3;
+}
+
+/* Added improved event checkbox styling for better UX */
+.events-checkbox-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.event-checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 255, 0, 0.08);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+}
+
+.event-checkbox-item:hover {
+  background: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.event-checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 0.8rem;
+  accent-color: var(--primary);
+}
+
+.event-checkbox-label {
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex-grow: 1;
+  font-weight: 500;
+}
+
+.event-checkbox-item.checked {
+  background: rgba(0, 255, 0, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
 }
 
 /* ===== SCHEDULE SECTION ===== */
 .schedule {
   padding: 5rem 2rem;
   background: rgba(255, 0, 255, 0.02);
-  border-top: 2px solid var(--secondary);
-  border-bottom: 2px solid var(--secondary);
 }
 
 .schedule-table {
@@ -1056,7 +1113,7 @@ main {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
-  transition: left 0.6s;
+  transition: left 0.6s; /* Corrected: removed extra colon */
 }
 
 .sponsor-card:hover::before {
@@ -1101,8 +1158,6 @@ main {
 .testimonials {
   padding: 5rem 2rem;
   background: rgba(255, 0, 255, 0.02);
-  border-top: 2px solid var(--secondary);
-  border-bottom: 2px solid var(--secondary);
 }
 
 .testimonials-grid {
@@ -1227,6 +1282,8 @@ main {
 /* ===== REGISTRATION SECTION ===== */
 .registration {
   padding: 5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .registration-box {
@@ -1269,8 +1326,7 @@ main {
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea {
+.form-group select {
   padding: 0.9rem;
   background: rgba(0, 255, 0, 0.05);
   border: 2px solid var(--accent);
@@ -1462,24 +1518,19 @@ footer {
   .countdown {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .hero-title {
     font-size: 2.5rem;
   }
-
   .events-grid {
     grid-template-columns: 1fr;
   }
-
   .hero-buttons {
     flex-direction: column;
   }
-
   .countdown-box,
   .prize-banner {
     margin: 1.5rem 0;
   }
-
   .prize-banner {
     flex-direction: column;
     gap: 1rem;
@@ -1491,24 +1542,179 @@ footer {
     font-size: 1.2rem;
     letter-spacing: 2px;
   }
-
   .hero-title {
     font-size: 1.8rem;
   }
-
   .section-title h2 {
     font-size: 1.8rem;
   }
-
   .welcome-title {
     font-size: 2.5rem;
   }
-
   .registration-box {
     padding: 1.5rem;
   }
-
   .nav-menu {
     padding: 1rem;
+  }
+}
+
+/* ===== TEAM SECTION ===== */
+.team {
+  padding: 5rem 2rem;
+  background: rgba(255, 0, 255, 0.02);
+}
+
+.team-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.team-subsection {
+  margin-bottom: 4rem;
+}
+
+.team-subsection-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 0 20px var(--secondary);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-card {
+  background: linear-gradient(135deg, var(--card) 0%, rgba(0, 255, 255, 0.05) 100%);
+  border: 2px solid var(--primary);
+  border-radius: 15px;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+  transition: all 0.3s;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.team-card:hover {
+  box-shadow: 0 0 50px var(--primary), inset 0 0 20px rgba(0, 255, 255, 0.1);
+  transform: translateY(-15px) scale(1.05);
+  border-color: var(--secondary);
+}
+
+.team-image-container {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 0, 255, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: filter 0.3s;
+}
+
+.team-card:hover .team-image {
+  filter: brightness(1.1);
+}
+
+/* Updated placeholder styling for actual images */
+.team-image-placeholder {
+  font-size: 5rem;
+  animation: floatIcon 3s ease-in-out infinite;
+  display: none;
+}
+
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.team-info {
+  padding: 1.5rem;
+}
+
+.team-name {
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px var(--accent);
+}
+
+.team-role {
+  color: var(--primary);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.team-description {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.team-social {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.team-social-link {
+  width: 35px;
+  height: 35px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.team-social-link:hover {
+  background: var(--primary);
+  color: var(--dark);
+  box-shadow: 0 0 15px var(--primary);
+  transform: scale(1.2) rotateZ(10deg);
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .team-subsection-title {
+    font-size: 1.5rem;
   }
 }

@@ -134,18 +134,78 @@ const testimonials = [
 ]
 
 const sponsors = [
-  { name: "TechCorp", logo: "💻" },
   { name: "Cloud Systems", logo: "☁️" },
   { name: "AI Labs", logo: "🤖" },
   { name: "Web Masters", logo: "🌐" },
   { name: "Game Studios", logo: "🎮" },
-  { name: "DevTools", logo: "⚙️" },
+]
+
+const organisers = [
+  {
+    id: 1,
+    name: "Dr. Latesh Malik",
+    role: "Festival Director",
+    description: "Visionary leader with 15+ years of experience in tech education",
+    image: "images/organiser1.jpg",
+    social: ["linkedin", "twitter"],
+  },
+  {
+    id: 2,
+    name: "Prof. Prashant Jawade",
+    role: "Technical Coordinator",
+    description: "Expert in event management and technical logistics",
+    image: "images/organiser2.jpg",
+    social: ["linkedin", "github"],
+  },
+  {
+    id: 3,
+    name: "Sudha Murthy",
+    role: "Sponsorship Head",
+    description: "Connects industry leaders with young talent",
+    image: "images/organiser3.jpg",
+    social: ["linkedin"],
+  },
+]
+
+const coreTeam = [
+  {
+    id: 1,
+    name: "Priya Verma",
+    role: "Event Manager",
+    description: "Ensures flawless event execution",
+    image: "images/team1.jpg",
+    social: ["linkedin", "twitter"],
+  },
+  {
+    id: 2,
+    name: "Arjun Singh",
+    role: "Technical Lead",
+    description: "Manages tech infrastructure and systems",
+    image: "images/team2.jpg",
+    social: ["github", "linkedin"],
+  },
+  {
+    id: 3,
+    name: "Maya Desai",
+    role: "Design Head",
+    description: "Creates stunning visual experiences",
+    image: "images/team3.jpg",
+    social: ["linkedin", "twitter"],
+  },
+  {
+    id: 4,
+    name: "Rohan Gupta",
+    role: "Marketing Lead",
+    description: "Builds buzz and excitement around EventVerse",
+    image: "images/team4.jpg",
+    social: ["linkedin"],
+  },
 ]
 
 const faqs = [
   {
     question: "How do I register?",
-    answer: "Fill the registration form above with your details and select events. That's it!",
+    answer: "Fill the registration form with your details and select events. That's it!",
   },
   { question: "What's the total prize pool?", answer: "We have over ₹10,85,000 in prizes across all events!" },
   {
@@ -171,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSchedule()
   renderTestimonials()
   renderSponsors()
+  renderTeam()
   renderFAQ()
   populateEventSelect()
   setupEventListeners()
@@ -223,7 +284,7 @@ function startCountdown() {
       const countdownEl = document.getElementById("countdown")
       if (countdownEl) {
         countdownEl.innerHTML =
-          '<div style="grid-column: 1/-1; color: var(--accent); font-size: 1.5rem; font-weight: bold; animation: glow 1s infinite;">🎉 FEST IS LIVE! 🎉</div>'
+          '<div style="grid-column: 1/-1; color: var(--accent); font-size: 1.5rem; font-weight: bold;">🎉 FEST IS LIVE! 🎉</div>'
       }
     }
   }
@@ -235,7 +296,6 @@ function startCountdown() {
 // CALCULATE TOTAL PRIZE
 function calculateTotalPrize() {
   const total = events.reduce((sum, e) => sum + e.totalPrize, 0)
-  const formatted = total > 1000000 ? (total / 100000).toFixed(1) + ",00,000+" : "₹" + total.toLocaleString()
   document.getElementById("totalPrize").textContent = "₹" + (total / 100000).toFixed(1).replace(/\.0$/, "") + ",00,000+"
 }
 
@@ -255,20 +315,20 @@ function renderEvents(eventsToRender) {
     card.className = "event-card"
     card.style.animationDelay = `${index * 0.05}s`
     card.innerHTML = `
-            <h3>${event.name}</h3>
-            <p>${event.description}</p>
-            <div class="event-prize">
-                <div class="event-prize-label">Prize Pool</div>
-                <div class="event-prize-amount">${event.prizePool.split("(")[0]}</div>
-            </div>
-            <div class="event-meta">
-                <span>📅 ${event.date}</span>
-                <span>📍 ${event.venue}</span>
-            </div>
-            <button class="btn btn-primary iconic-btn event-card-btn" onclick="openEventModal(${event.id})">
-                <span class="icon">→</span> View Details
-            </button>
-        `
+      <h3>${event.name}</h3>
+      <p>${event.description}</p>
+      <div class="event-prize">
+        <div class="event-prize-label">Prize Pool</div>
+        <div class="event-prize-amount">${event.prizePool.split("(")[0]}</div>
+      </div>
+      <div class="event-meta">
+        <span>📅 ${event.date}</span>
+        <span>📍 ${event.venue}</span>
+      </div>
+      <button class="btn btn-primary event-card-btn" onclick="openEventModal(${event.id})">
+        <span class="btn-icon">→</span> View Details
+      </button>
+    `
     grid.appendChild(card)
   })
 }
@@ -281,11 +341,11 @@ function renderSchedule() {
   events.forEach((event) => {
     const row = document.createElement("tr")
     row.innerHTML = `
-            <td>${event.time}</td>
-            <td><strong>${event.name}</strong></td>
-            <td>${event.venue}</td>
-            <td style="color: var(--accent); text-transform: capitalize;">${event.category}</td>
-        `
+      <td>${event.time}</td>
+      <td><strong>${event.name}</strong></td>
+      <td>${event.venue}</td>
+      <td style="color: var(--accent); text-transform: capitalize;">${event.category}</td>
+    `
     tbody.appendChild(row)
   })
 }
@@ -300,11 +360,11 @@ function renderTestimonials() {
     card.className = "testimonial-card"
     card.style.animationDelay = `${index * 0.1}s`
     card.innerHTML = `
-            <div class="testimonial-quote">"</div>
-            <p class="testimonial-text">${test.text}</p>
-            <div class="testimonial-author">${test.author}</div>
-            <div class="testimonial-role">${test.role}</div>
-        `
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">${test.text}</p>
+      <div class="testimonial-author">${test.author}</div>
+      <div class="testimonial-role">${test.role}</div>
+    `
     grid.appendChild(card)
   })
 }
@@ -319,9 +379,9 @@ function renderSponsors() {
     card.className = "sponsor-card"
     card.style.animationDelay = `${index * 0.05}s`
     card.innerHTML = `
-            <div class="sponsor-logo">${sponsor.logo}</div>
-            <div class="sponsor-name">${sponsor.name}</div>
-        `
+      <div class="sponsor-logo">${sponsor.logo}</div>
+      <div class="sponsor-name">${sponsor.name}</div>
+    `
     grid.appendChild(card)
   })
 }
@@ -336,14 +396,14 @@ function renderFAQ() {
     item.className = "faq-item"
     item.style.animationDelay = `${index * 0.05}s`
     item.innerHTML = `
-            <div class="faq-question" onclick="toggleFAQ(this)">
-                <h3>${faq.question}</h3>
-                <span class="faq-toggle">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>${faq.answer}</p>
-            </div>
-        `
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <h3>${faq.question}</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>${faq.answer}</p>
+      </div>
+    `
     container.appendChild(item)
   })
 }
@@ -367,23 +427,39 @@ function toggleFAQ(element) {
 
 // POPULATE EVENT SELECT
 function populateEventSelect() {
-  const select = document.getElementById("eventSelect")
-  select.innerHTML = ""
+  const container = document.getElementById("eventsCheckboxContainer")
+  container.innerHTML = ""
 
   events.forEach((event) => {
-    const option = document.createElement("option")
-    option.value = event.id
-    option.textContent = event.name
-    select.appendChild(option)
+    const itemDiv = document.createElement("div")
+    itemDiv.className = "event-checkbox-item"
+    itemDiv.innerHTML = `
+      <input 
+        type="checkbox" 
+        id="event-${event.id}" 
+        value="${event.id}"
+        onchange="updateSelectedEvents()"
+      >
+      <label for="event-${event.id}" class="event-checkbox-label">${event.name}</label>
+    `
+    container.appendChild(itemDiv)
   })
-
-  select.addEventListener("change", updateSelectedEvents)
 }
 
 // UPDATE SELECTED EVENTS
 function updateSelectedEvents() {
-  const select = document.getElementById("eventSelect")
-  selectedEventIds = Array.from(select.selectedOptions).map((o) => Number(o.value))
+  const checkboxes = document.querySelectorAll("#eventsCheckboxContainer input[type='checkbox']:checked")
+  selectedEventIds = Array.from(checkboxes).map((cb) => Number(cb.value))
+
+  document.querySelectorAll(".event-checkbox-item").forEach((item) => {
+    const checkbox = item.querySelector("input[type='checkbox']")
+    if (checkbox.checked) {
+      item.classList.add("checked")
+    } else {
+      item.classList.remove("checked")
+    }
+  })
+
   displaySelectedEvents()
   playSound("click")
 }
@@ -399,9 +475,9 @@ function displaySelectedEvents() {
       const tag = document.createElement("div")
       tag.className = "event-tag"
       tag.innerHTML = `
-                ${event.name}
-                <span class="event-tag-remove" onclick="removeEvent(${id})">×</span>
-            `
+        ${event.name}
+        <span class="event-tag-remove" onclick="removeEvent(${id})">×</span>
+      `
       display.appendChild(tag)
     }
   })
@@ -409,11 +485,11 @@ function displaySelectedEvents() {
 
 // REMOVE EVENT
 function removeEvent(id) {
-  const select = document.getElementById("eventSelect")
-  Array.from(select.options).forEach((opt) => {
-    if (Number(opt.value) === id) opt.selected = false
-  })
-  updateSelectedEvents()
+  const checkbox = document.getElementById(`event-${id}`)
+  if (checkbox) {
+    checkbox.checked = false
+    updateSelectedEvents()
+  }
 }
 
 // SEARCH AND FILTER
@@ -447,7 +523,6 @@ function filterEvents() {
   }
 
   renderEvents(filtered)
-  playSound("click")
 }
 
 // OPEN EVENT MODAL
@@ -457,26 +532,22 @@ function openEventModal(eventId) {
 
   const modal = document.getElementById("eventModal")
   document.getElementById("modalBody").innerHTML = `
-        <h2 style="color: var(--accent); margin-bottom: 1rem;">${event.name}</h2>
-        <p>${event.description}</p>
-        
-        <h3>Prize Pool</h3>
-        <p>${event.prizePool}</p>
-        
-        <h3>Rules & Details</h3>
-        <p style="white-space: pre-line;">${event.rules}</p>
-        
-        <h3>Event Information</h3>
-        <p><strong>Date:</strong> ${event.date}</p>
-        <p><strong>Time:</strong> ${event.time}</p>
-        <p><strong>Venue:</strong> ${event.venue}</p>
-        <p><strong>Organizer:</strong> ${event.organizer}</p>
-        <p><strong>Participants:</strong> ${event.participants}</p>
-        
-        <button class="btn btn-primary iconic-btn btn-large" onclick="selectEventFromModal(${event.id})" style="margin-top: 1.5rem;">
-            <span class="icon">✓</span> Register for This Event
-        </button>
-    `
+    <h2 style="color: var(--accent); margin-bottom: 1rem;">${event.name}</h2>
+    <p>${event.description}</p>
+    <h3>Prize Pool</h3>
+    <p>${event.prizePool}</p>
+    <h3>Rules & Details</h3>
+    <p style="white-space: pre-line;">${event.rules}</p>
+    <h3>Event Information</h3>
+    <p><strong>Date:</strong> ${event.date}</p>
+    <p><strong>Time:</strong> ${event.time}</p>
+    <p><strong>Venue:</strong> ${event.venue}</p>
+    <p><strong>Organizer:</strong> ${event.organizer}</p>
+    <p><strong>Participants:</strong> ${event.participants}</p>
+    <button class="btn btn-primary btn-large" onclick="selectEventFromModal(${event.id})" style="margin-top: 1.5rem;">
+      <span class="btn-icon">✓</span> Register for This Event
+    </button>
+  `
 
   modal.classList.add("active")
   playSound("success")
@@ -493,12 +564,12 @@ function selectEventFromModal(eventId) {
     selectedEventIds.push(eventId)
   }
 
-  const select = document.getElementById("eventSelect")
-  Array.from(select.options).forEach((opt) => {
-    opt.selected = selectedEventIds.includes(Number(opt.value))
-  })
+  const checkbox = document.getElementById(`event-${eventId}`)
+  if (checkbox) {
+    checkbox.checked = true
+  }
 
-  displaySelectedEvents()
+  updateSelectedEvents()
   closeModal()
   scrollToSection("register")
   playSound("success")
@@ -529,7 +600,12 @@ document.getElementById("registrationForm").addEventListener("submit", (e) => {
   document.getElementById("registrationForm").reset()
   selectedEventIds = []
   displaySelectedEvents()
-  document.getElementById("eventSelect").value = ""
+
+  document.querySelectorAll("#eventsCheckboxContainer input[type='checkbox']").forEach((cb) => {
+    cb.checked = false
+    cb.closest(".event-checkbox-item").classList.remove("checked")
+  })
+
   playSound("success")
 })
 
@@ -621,3 +697,52 @@ document.getElementById("eventModal").addEventListener("click", (e) => {
     closeModal()
   }
 })
+
+// RENDER TEAM
+function renderTeam() {
+  const organisersGrid = document.getElementById("organisersGrid")
+  const coreTeamGrid = document.getElementById("coreTeamGrid")
+
+  organisersGrid.innerHTML = ""
+  coreTeamGrid.innerHTML = ""
+
+  organisers.forEach((member, index) => {
+    const card = createTeamCard(member, index)
+    organisersGrid.appendChild(card)
+  })
+
+  coreTeam.forEach((member, index) => {
+    const card = createTeamCard(member, index)
+    coreTeamGrid.appendChild(card)
+  })
+}
+
+function createTeamCard(member, index) {
+  const card = document.createElement("div")
+  card.className = "team-card"
+  card.style.animationDelay = `${index * 0.08}s`
+
+  const socialLinks = {
+    linkedin: "🔗",
+    github: "💻",
+    twitter: "𝕏",
+  }
+
+  const socialHTML = member.social
+    .map((social) => `<a href="#" class="team-social-link" title="${social}">${socialLinks[social] || "•"}</a>`)
+    .join("")
+
+  card.innerHTML = `
+    <div class="team-image-container">
+      <img src="${member.image}" alt="${member.name}" class="team-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23333%22 width=%22200%22 height=%22200%22/%3E%3Ctext fill=%22%2300ffff%22 font-size=%2248%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E?%3C/text%3E%3C/svg%3E'">
+    </div>
+    <div class="team-info">
+      <div class="team-name">${member.name}</div>
+      <div class="team-role">${member.role}</div>
+      <p class="team-description">${member.description}</p>
+      <div class="team-social">${socialHTML}</div>
+    </div>
+  `
+
+  return card
+}
