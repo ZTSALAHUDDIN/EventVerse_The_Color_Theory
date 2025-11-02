@@ -19,7 +19,6 @@
   <li><strong>Contact & Registration Section:</strong> Includes map (static or embedded), organizer contact info, and a mock registration form with client-side validation and "Registration Successful!" feedback.</li>
   <li><strong>Interactive Elements:</strong> Buttons and actions with subtle sound effects and animations to create an inclusive, festive experience.</li>
   <li><strong>Accessibility:</strong> Full keyboard navigation, screen reader compatibility, semantic HTML, ARIA roles, alt text for images, high contrast colors, and readable fonts.</li>
-  <li><strong>Responsiveness:</strong> Works seamlessly across mobile, tablet, and desktop devices.</li>
 </ul>
 
 <h2>🎯 Goals</h2>
