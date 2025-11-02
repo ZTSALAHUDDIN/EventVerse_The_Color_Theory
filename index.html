@@ -3,9 +3,1220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech fest website</title>
+    <title>EventVerse - College Tech Fest 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ffff;
+            --secondary: #ff00ff;
+            --accent: #00ff00;
+            --dark-bg: #0a0e27;
+            --card-bg: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8ff;
+            --border: 2px solid;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0033 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                text-shadow: -2px 0 var(--primary), 2px 0 var(--secondary);
+            }
+            14% {
+                text-shadow: -2px 0 var(--primary), 2px 0 var(--secondary);
+            }
+            15% {
+                text-shadow: 2px 0 var(--primary), -2px 0 var(--secondary);
+            }
+            49% {
+                text-shadow: 2px 0 var(--primary), -2px 0 var(--secondary);
+            }
+            50% {
+                text-shadow: -2px 0 var(--primary), 2px 0 var(--secondary);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+            }
+            50% {
+                box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+            }
+        }
+
+        @keyframes scan-line {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        @keyframes neon-flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float-in {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotateX(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateX(0);
+            }
+        }
+
+        /* HEADER & NAV */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            border-bottom: var(--border) var(--primary);
+            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+            animation: glitch 2s infinite;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: glitch 3s infinite;
+            position: relative;
+        }
+
+        .hero h1::before,
+        .hero h1::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero h1::before {
+            animation: glitch 2s infinite;
+            color: var(--primary);
+            z-index: -1;
+        }
+
+        .hero h1::after {
+            animation: glitch 2s infinite reverse;
+            color: var(--secondary);
+            z-index: -2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px var(--accent);
+            animation: fadeInUp 1.2s ease-out;
+            letter-spacing: 2px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.4s ease-out;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            border: var(--border) var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            background: rgba(0, 255, 255, 0.05);
+            animation: pulse-glow 3s infinite;
+        }
+
+        .meta-item span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1.6s ease-out;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Courier New', monospace;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px var(--primary), 0 0 50px rgba(0, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+            box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px var(--secondary);
+            transform: scale(1.05);
+        }
+
+        /* EVENTS SECTION */
+        .events-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--text-secondary);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark-bg);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .event-card {
+            border: var(--border) var(--primary);
+            padding: 1.5rem;
+            background: var(--card-bg);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 5px;
+            animation: float-in 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: scan-line 3s infinite;
+        }
+
+        .event-card:hover {
+            box-shadow: 0 0 30px var(--primary), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--secondary);
+        }
+
+        .event-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .event-card p {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 3px;
+        }
+
+        .event-meta-item {
+            font-size: 0.9rem;
+        }
+
+        .event-meta-label {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .event-meta-value {
+            color: var(--text-primary);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            animation: fadeInUp 0.3s;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: var(--border) var(--primary);
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px var(--primary);
+            animation: float-in 0.4s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            color: var(--text-secondary);
+        }
+
+        .modal-body h3 {
+            color: var(--accent);
+            margin: 1.5rem 0 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .prize-pool {
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 3px;
+        }
+
+        .register-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        /* SCHEDULE SECTION */
+        .schedule-section {
+            padding: 4rem 2rem;
+            background: rgba(255, 0, 255, 0.02);
+            border-top: var(--border) var(--secondary);
+            border-bottom: var(--border) var(--secondary);
+            margin: 4rem 0;
+        }
+
+        .schedule-table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--accent);
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--primary);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table td {
+            padding: 1rem;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            border: var(--border) var(--secondary);
+            padding: 2rem;
+            border-radius: 5px;
+            background: rgba(255, 0, 255, 0.05);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-info h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-info strong {
+            color: var(--accent);
+        }
+
+        .registration-form {
+            border: var(--border) var(--accent);
+            padding: 2rem;
+            background: rgba(0, 255, 0, 0.02);
+            border-radius: 5px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 15px var(--accent);
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+            margin: 1rem 0;
+            animation: fadeInUp 0.5s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--card-bg);
+            border-top: var(--border) var(--primary);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--dark-bg);
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active a {
+                display: block;
+                padding: 0.8rem;
+                border-bottom: 1px solid var(--primary);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 2rem;
+                margin-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .schedule-table {
+                font-size: 0.85rem;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .meta-item {
+                flex: 0 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- HEADER -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="logo">EVENTVERSE</div>
+            <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li><a href="#home" role="menuitem">Home</a></li>
+                <li><a href="#events" role="menuitem">Events</a></li>
+                <li><a href="#schedule" role="menuitem">Schedule</a></li>
+                <li><a href="#contact" role="menuitem">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <!-- HERO SECTION -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title" data-text="EVENTVERSE">EVENTVERSE</h1>
+                <p class="hero-subtitle">Welcome to the Future of Tech Fests</p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <span>Dec 15-17, 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>College Campus</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>500+ Participants</span>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('events')" aria-label="View events">View Events</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('schedule')" aria-label="View schedule">Schedule</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENTS SECTION -->
+        <section class="events-section" id="events" aria-labelledby="events-title">
+            <div class="section-header">
+                <h2 id="events-title">Featured Events</h2>
+                <p>Experience the Ultimate Tech Fest Experience</p>
+            </div>
+
+            <div class="filter-controls" role="toolbar" aria-label="Event filters">
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">All Events</button>
+                <button class="filter-btn" data-filter="technical" aria-pressed="false">Technical</button>
+                <button class="filter-btn" data-filter="cultural" aria-pressed="false">Cultural</button>
+                <button class="filter-btn" data-filter="gaming" aria-pressed="false">Gaming</button>
+                <button class="filter-btn" data-filter="workshops" aria-pressed="false">Workshops</button>
+            </div>
+
+            <div class="events-grid" id="eventsGrid" role="list">
+                <!-- Events will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- SCHEDULE SECTION -->
+        <section class="schedule-section" id="schedule" aria-labelledby="schedule-title">
+            <div class="section-header">
+                <h2 id="schedule-title">Event Schedule</h2>
+                <p>Complete Fest Timeline</p>
+            </div>
+
+            <table class="schedule-table" role="table">
+                <thead>
+                    <tr role="row">
+                        <th scope="col">Time</th>
+                        <th scope="col">Event</th>
+                        <th scope="col">Venue</th>
+                        <th scope="col">Category</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleBody" role="rowgroup">
+                    <!-- Schedule items will be dynamically inserted -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CONTACT & REGISTRATION -->
+        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+            <div class="section-header">
+                <h2 id="contact-title">Get Registered</h2>
+                <p>Join the Ultimate Tech Experience</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Info</h3>
+                    <p><strong>Email:</strong> info@eventverse.tech</p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Address:</strong> College Campus, Main Building</p>
+                    <p><strong>Organizer:</strong> Tech Club</p>
+                </div>
+
+                <form class="registration-form" id="registrationForm" aria-labelledby="form-title">
+                    <h3 id="form-title" style="color: var(--accent); margin-bottom: 1.5rem; text-transform: uppercase;">Quick Registration</h3>
+                    
+                    <div class="success-message" id="successMessage" role="alert">
+                        ✓ Registration Successful! Welcome to EventVerse
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required aria-required="true" placeholder="Your Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required aria-required="true" placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="98765 43210">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="events">Events of Interest *</label>
+                        <input type="text" id="events" name="events" required aria-required="true" placeholder="Enter interested events">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary register-btn" aria-label="Submit registration">Register Now</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- EVENT DETAIL MODAL -->
+    <div id="eventModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-btn" onclick="closeModal()" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p>&copy; 2025 EventVerse Tech Fest. All rights reserved. | Designed for Excellence</p>
+    </footer>
+
+    <script>
+        // EVENT DATA
+        const events = [
+            {
+                id: 1,
+                name: 'Code Clash',
+                category: 'technical',
+                time: '10:00 AM',
+                date: 'Dec 15',
+                venue: 'Lab A',
+                description: 'Intense programming competition where you solve challenges against the clock.',
+                rules: '1. Solo participation\n2. 3 hours duration\n3. Any language allowed',
+                prizePool: '₹15,000 (1st), ₹10,000 (2nd), ₹5,000 (3rd)',
+                organizer: 'Programming Club'
+            },
+            {
+                id: 2,
+                name: 'Web Wizardry',
+                category: 'technical',
+                time: '2:00 PM',
+                date: 'Dec 15',
+                venue: 'Lab B',
+                description: 'Build innovative web applications and showcase your web development skills.',
+                rules: '1. Teams of 2-3\n2. 4 hours duration\n3. React/Vue preferred',
+                prizePool: '₹20,000 (1st), ₹12,000 (2nd), ₹8,000 (3rd)',
+                organizer: 'Web Dev Club'
+            },
+            {
+                id: 3,
+                name: 'AI Innovation',
+                category: 'technical',
+                time: '10:00 AM',
+                date: 'Dec 16',
+                venue: 'Hall C',
+                description: 'Develop AI solutions for real-world problems using machine learning.',
+                rules: '1. Teams of 3-4\n2. 5 hours duration\n3. Any ML framework',
+                prizePool: '₹25,000 (1st), ₹15,000 (2nd), ₹10,000 (3rd)',
+                organizer: 'AI & ML Club'
+            },
+            {
+                id: 4,
+                name: 'Cyber Quest',
+                category: 'technical',
+                time: '11:00 AM',
+                date: 'Dec 17',
+                venue: 'Lab D',
+                description: 'Capture the Flag competition testing your cybersecurity skills.',
+                rules: '1. Teams of 2\n2. 2 hours duration\n3. No external tools',
+                prizePool: '₹18,000 (1st), ₹10,000 (2nd), ₹5,000 (3rd)',
+                organizer: 'Cybersecurity Club'
+            },
+            {
+                id: 5,
+                name: 'Battle of Bands',
+                category: 'cultural',
+                time: '6:00 PM',
+                date: 'Dec 15',
+                venue: 'Auditorium',
+                description: 'Showcase your musical talents and rock the stage with your band.',
+                rules: '1. 4-8 members per band\n2. 15 minutes performance\n3. Original or covers allowed',
+                prizePool: '₹10,000 (1st), ₹6,000 (2nd), ₹3,000 (3rd)',
+                organizer: 'Cultural Committee'
+            },
+            {
+                id: 6,
+                name: 'Dance Revolution',
+                category: 'cultural',
+                time: '7:30 PM',
+                date: 'Dec 16',
+                venue: 'Auditorium',
+                description: 'Express yourself through dance and compete with incredible dancers.',
+                rules: '1. Groups or solo\n2. 5 minutes max\n3. Any dance style',
+                prizePool: '₹8,000 (1st), ₹5,000 (2nd), ₹2,000 (3rd)',
+                organizer: 'Dance Club'
+            },
+            {
+                id: 7,
+                name: 'Gaming Tournament',
+                category: 'gaming',
+                time: '9:00 AM',
+                date: 'Dec 16',
+                venue: 'Gaming Arena',
+                description: 'Compete in popular esports titles and prove your gaming prowess.',
+                rules: '1. Teams or solo\n2. Playoff format\n3. All laptops provided',
+                prizePool: '₹30,000 (1st), ₹15,000 (2nd), ₹8,000 (3rd)',
+                organizer: 'Gaming Club'
+            },
+            {
+                id: 8,
+                name: 'Web Dev Workshop',
+                category: 'workshops',
+                time: '2:00 PM',
+                date: 'Dec 17',
+                venue: 'Class Room 5',
+                description: 'Learn modern web development from industry experts.',
+                rules: '1. Free for all\n2. 2 hours session\n3. Laptops required',
+                prizePool: 'Certificate of Participation',
+                organizer: 'Tech Club'
+            }
+        ];
+
+        // INITIALIZE
+        document.addEventListener('DOMContentLoaded', () => {
+            renderEvents(events);
+            renderSchedule(events);
+            setupEventListeners();
+            setupFormValidation();
+        });
+
+        // RENDER EVENTS
+        function renderEvents(eventsToRender) {
+            const grid = document.getElementById('eventsGrid');
+            grid.innerHTML = '';
+            
+            eventsToRender.forEach((event, index) => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.role = 'listitem';
+                card.style.animation = `float-in 0.6s ease-out ${index * 0.1}s both`;
+                card.innerHTML = `
+                    <h3>${event.name}</h3>
+                    <p>${event.description}</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <span class="event-meta-label">Time:</span>
+                            <span class="event-meta-value">${event.time}</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <span class="event-meta-label">Prize:</span>
+                            <span class="event-meta-value">₹ Prizes</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal(${event.id})" style="width: 100%; margin-top: 1rem;">View Details</button>
+                `;
+                card.addEventListener('click', () => openModal(event.id));
+                grid.appendChild(card);
+            });
+        }
+
+        // RENDER SCHEDULE
+        function renderSchedule(eventsToRender) {
+            const tbody = document.getElementById('scheduleBody');
+            tbody.innerHTML = '';
+            
+            eventsToRender.forEach(event => {
+                const row = document.createElement('tr');
+                row.role = 'row';
+                row.innerHTML = `
+                    <td>${event.time}</td>
+                    <td><strong>${event.name}</strong></td>
+                    <td>${event.venue}</td>
+                    <td style="text-transform: capitalize; color: var(--accent);">${event.category}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // OPEN MODAL
+        function openModal(eventId) {
+            const event = events.find(e => e.id === eventId);
+            if (!event) return;
+
+            const modal = document.getElementById('eventModal');
+            document.getElementById('modalTitle').textContent = event.name;
+            
+            document.getElementById('modalBody').innerHTML = `
+                <p style="margin-bottom: 1rem;">${event.description}</p>
+                
+                <h3>📋 Rules</h3>
+                <p style="white-space: pre-line; color: var(--text-secondary);">${event.rules}</p>
+                
+                <div class="prize-pool">
+                    <h3 style="margin: 0 0 0.5rem 0;">🏆 Prize Pool</h3>
+                    <p>${event.prizePool}</p>
+                </div>
+
+                <h3>👤 Organizer</h3>
+                <p>${event.organizer}</p>
+
+                <h3>📅 Details</h3>
+                <p><strong>Date:</strong> ${event.date}</p>
+                <p><strong>Time:</strong> ${event.time}</p>
+                <p><strong>Venue:</strong> ${event.venue}</p>
+
+                <button class="btn btn-primary register-btn" onclick="registerEvent('${event.name}')" aria-label="Register for ${event.name}">Register Now</button>
+            `;
+            
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // CLOSE MODAL
+        function closeModal() {
+            const modal = document.getElementById('eventModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+        }
+
+        // FILTER EVENTS
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+
+                const filter = btn.dataset.filter;
+                const filtered = filter === 'all' ? events : events.filter(e => e.category === filter);
+                renderEvents(filtered);
+            });
+        });
+
+        // FORM VALIDATION
+        function setupFormValidation() {
+            const form = document.getElementById('registrationForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const events = document.getElementById('events').value.trim();
+
+                if (!fullName || !email || !events) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+
+                // Show success message
+                const successMsg = document.getElementById('successMessage');
+                successMsg.style.display = 'block';
+
+                // Reset form
+                form.reset();
+
+                // Hide success message after 4 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 4000);
+            });
+        }
+
+        // REGISTER EVENT
+        function registerEvent(eventName) {
+            document.getElementById('events').value = eventName;
+            closeModal();
+            scrollToSection('contact');
+        }
+
+        // SCROLL TO SECTION
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // MOBILE MENU TOGGLE
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            const navLinks = document.getElementById('navLinks');
+            const toggle = document.getElementById('menuToggle');
+            navLinks.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        });
+
+        // CLOSE MODAL ON OUTSIDE CLICK
+        document.getElementById('eventModal').addEventListener('click', (e) => {
+            if (e.target.id === 'eventModal') {
+                closeModal();
+            }
+        });
+
+        // KEYBOARD NAVIGATION
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
