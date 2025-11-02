@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- WELCOME ANIMATION SCREEN -->
-    <div class="welcome-screen" id="welcomeScreen">
+    <!-- Welcome Screen Animation -->
+    <div id="welcomeScreen" class="welcome-screen">
         <div class="welcome-background">
             <div class="floating-particle p1"></div>
             <div class="floating-particle p2"></div>
@@ -34,8 +34,8 @@
         </div>
     </div>
 
-    <!-- SUCCESS POPUP MODAL -->
-    <div class="success-popup" id="successPopup">
+    <!-- Registration Success Modal -->
+    <div id="successPopup" class="success-popup">
         <div class="success-confetti">
             <span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span>
@@ -43,38 +43,36 @@
         <div class="success-content">
             <div class="success-checkmark">✓</div>
             <h2>Registration Successful!</h2>
-            <p id="successMessage">You have been successfully registered!</p>
+            <p id="successMessage">You have successfully joined the event.</p>
             <button class="btn btn-primary" onclick="closeSuccessPopup()">Continue</button>
         </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
             <div class="logo">
                 <span class="logo-text">EVENTVERSE</span>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#events" class="nav-link">Events</a></li>
-                <li><a href="#schedule" class="nav-link">Schedule</a></li>
-                <li><a href="#sponsors" class="nav-link">Sponsors</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#team" class="nav-link">Meet the Team</a></li>
-                <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="#register" class="nav-link">Register</a></li>
+            <ul id="navMenu" class="nav-menu">
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#events">Events</a></li>
+                <li><a class="nav-link" href="#schedule">Schedule</a></li>
+                <li><a class="nav-link" href="#sponsors">Sponsors</a></li>
+                <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                <li><a class="nav-link" href="#team">Meet the Team</a></li>
+                <li><a class="nav-link" href="#faq">FAQ</a></li>
+                <li><a class="nav-link" href="#register">Register</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div id="hamburger" class="hamburger">
+                <span></span><span></span><span></span>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section class="hero" id="home">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
             <div class="hero-bg-effects">
                 <div class="glow glow-1"></div>
                 <div class="glow glow-2"></div>
@@ -83,37 +81,40 @@
             <div class="hero-content">
                 <h1 class="hero-title">EVENTVERSE</h1>
                 <p class="hero-tagline">Experience the Future of Tech</p>
-                
+
+                <!-- Countdown Timer -->
                 <div class="countdown-box">
-                    <h3>Tech Fest Launches In</h3>
-                    <div class="countdown" id="countdown">
+                    <h3>Tech Fest Begins In</h3>
+                    <div id="countdown" class="countdown">
                         <div class="countdown-item">
-                            <span class="countdown-num" id="days">00</span>
+                            <span id="days" class="countdown-num">00</span>
                             <span class="countdown-label">Days</span>
                         </div>
                         <div class="countdown-item">
-                            <span class="countdown-num" id="hours">00</span>
+                            <span id="hours" class="countdown-num">00</span>
                             <span class="countdown-label">Hours</span>
                         </div>
                         <div class="countdown-item">
-                            <span class="countdown-num" id="minutes">00</span>
+                            <span id="minutes" class="countdown-num">00</span>
                             <span class="countdown-label">Minutes</span>
                         </div>
                         <div class="countdown-item">
-                            <span class="countdown-num" id="seconds">00</span>
+                            <span id="seconds" class="countdown-num">00</span>
                             <span class="countdown-label">Seconds</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Prize Banner -->
                 <div class="prize-banner">
                     <div class="prize-trophy">🏆</div>
                     <div class="prize-info">
                         <span class="prize-label">Total Prize Pool</span>
-                        <span class="prize-total" id="totalPrize">₹10,00,000+</span>
+                        <span id="totalPrize" class="prize-total">₹10,00,000+</span>
                     </div>
                 </div>
 
+                <!-- Hero Buttons -->
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="scrollToSection('events')">
                         <span class="btn-icon">🎯</span>
@@ -127,15 +128,15 @@
             </div>
         </section>
 
-        <!-- EVENTS SECTION -->
-        <section class="events" id="events">
+        <!-- Events Section -->
+        <section id="events" class="events">
             <div class="section-title">
                 <h2>Featured Events</h2>
-                <p>Choose from our amazing lineup of competitions</p>
+                <p>Choose from our exciting competitions</p>
             </div>
 
             <div class="search-container">
-                <input type="text" class="search-bar" id="searchBar" placeholder="🔍 Search events...">
+                <input id="searchBar" type="text" class="search-bar" placeholder="🔍 Search events...">
             </div>
 
             <div class="filters">
@@ -146,18 +147,18 @@
                 <button class="filter-btn" data-filter="workshops">Workshops</button>
             </div>
 
-            <div class="events-grid" id="eventsGrid">
-                <!-- Events rendered here -->
+            <div id="eventsGrid" class="events-grid">
+                <!-- Event cards generated by JS -->
             </div>
         </section>
 
-        <!-- SCHEDULE SECTION -->
-        <section class="schedule" id="schedule">
+        <!-- Schedule Section -->
+        <section id="schedule" class="schedule">
             <div class="section-title">
                 <h2>Event Schedule</h2>
                 <p>Plan your tech fest experience</p>
             </div>
-            <table class="schedule-table" id="scheduleTable">
+            <table id="scheduleTable" class="schedule-table">
                 <thead>
                     <tr>
                         <th>Time</th>
@@ -167,172 +168,78 @@
                     </tr>
                 </thead>
                 <tbody id="scheduleBody">
-                    <!-- Schedule rendered here -->
+                    <!-- Schedule rows generated dynamically -->
                 </tbody>
             </table>
         </section>
 
-        <!-- SPONSORS SECTION -->
-        <section class="sponsors" id="sponsors">
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="sponsors">
             <div class="section-title">
-                <h2>Our Premium Sponsors</h2>
-                <p>Proudly Powered by Industry Leaders</p>
+                <h2>Our Sponsors</h2>
+                <p>Proudly Supported by Industry Leaders</p>
             </div>
-            <div class="sponsors-grid" id="sponsorsGrid">
-                <!-- Sponsors rendered here -->
+            <div id="sponsorsGrid" class="sponsors-grid">
+                <!-- Sponsor logos generated here -->
             </div>
         </section>
 
-        <!-- TESTIMONIALS SECTION -->
-        <section class="testimonials" id="testimonials">
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
             <div class="section-title">
-                <h2>What Students Say</h2>
+                <h2>Student Feedback</h2>
                 <p>Hear from previous participants</p>
             </div>
-            <div class="testimonials-grid" id="testimonialsGrid">
-                <!-- Testimonials rendered here -->
+            <div id="testimonialsGrid" class="testimonials-grid">
+                <!-- Testimonials dynamically loaded -->
             </div>
         </section>
 
-        <!-- TEAM SECTION -->
-        <section class="team" id="team">
+        <!-- Team Section -->
+        <section id="team" class="team">
             <div class="section-title">
                 <h2>Meet the Team</h2>
                 <p>The brilliant minds behind EventVerse</p>
             </div>
-            
+
             <div class="team-container">
+                <!-- Festival Organisers -->
                 <div class="team-subsection">
                     <h3 class="team-subsection-title">Festival Organisers</h3>
-                    <div class="team-grid" id="organisersGrid">
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="EventVerse_The_Color_Theory/images/organiser1.jpg" alt="Sarah Chen" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Sarah Chen</div>
-                                <div class="team-role">Event Director</div>
-                                <div class="team-description">Visionary leader with 8+ years in tech events</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">gh</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="images/organiser2.jpg" alt="Raj Patel" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Raj Patel</div>
-                                <div class="team-role">Operations Lead</div>
-                                <div class="team-description">Expert in logistics and event coordination</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">tw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="images/organiser3.jpg" alt="Maya Singh" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Maya Singh</div>
-                                <div class="team-role">Creative Head</div>
-                                <div class="team-description">Designer and brand strategist extraordinaire</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">ig</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="organisersGrid" class="team-grid">
+                        <!-- Organiser cards dynamically loaded -->
                     </div>
                 </div>
-                
+
+                <!-- Core Team -->
                 <div class="team-subsection">
                     <h3 class="team-subsection-title">Core Team</h3>
-                    <div class="team-grid" id="coreTeamGrid">
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="images/team1.jpg" alt="Alex Kumar" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Alex Kumar</div>
-                                <div class="team-role">Technical Lead</div>
-                                <div class="team-description">Full-stack developer and tech enthusiast</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">gh</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="images/team2.jpg" alt="Priya Sharma" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Priya Sharma</div>
-                                <div class="team-role">Community Manager</div>
-                                <div class="team-description">Passionate about building communities</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">tw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="images/team3.jpg" alt="Vikram Das" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Vikram Das</div>
-                                <div class="team-role">Marketing Specialist</div>
-                                <div class="team-description">Strategic marketer and brand advocate</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">ig</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-card">
-                            <div class="team-image-container">
-                                <img src="images/team4.jpg" alt="Zara Khan" class="team-image">
-                            </div>
-                            <div class="team-info">
-                                <div class="team-name">Zara Khan</div>
-                                <div class="team-role">Finance Manager</div>
-                                <div class="team-description">Budget analyst and financial strategist</div>
-                                <div class="team-social">
-                                    <a href="#" class="team-social-link">in</a>
-                                    <a href="#" class="team-social-link">tw</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="coreTeamGrid" class="team-grid">
+                        <!-- Core team cards dynamically loaded -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ SECTION -->
-        <section class="faq" id="faq">
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
             <div class="section-title">
                 <h2>Frequently Asked Questions</h2>
-                <p>Get your answers here</p>
+                <p>All your queries answered</p>
             </div>
-            <div class="faq-container" id="faqContainer">
-                <!-- FAQ rendered here -->
+            <div id="faqContainer" class="faq-container">
+                <!-- FAQs dynamically rendered -->
             </div>
         </section>
 
-        <!-- REGISTRATION SECTION -->
-        <section class="registration" id="register">
+        <!-- Registration Section -->
+        <section id="register" class="registration">
             <div class="section-title">
                 <h2>Quick Registration</h2>
                 <p>Join the revolution today</p>
             </div>
             <div class="registration-box">
-                <form class="registration-form" id="registrationForm">
+                <form id="registrationForm" class="registration-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Full Name *</label>
@@ -357,11 +264,10 @@
 
                     <div class="form-group full-width">
                         <label>Select Events (Multiple) *</label>
-                        <!-- Replaced dropdown with user-friendly checkbox grid -->
-                        <div class="events-checkbox-container" id="eventsCheckboxContainer">
-                            <!-- Checkboxes populated by JS -->
+                        <div id="eventsCheckboxContainer" class="events-checkbox-container">
+                            <!-- Checkboxes generated via JS -->
                         </div>
-                        <div class="selected-events-display" id="selectedEventsDisplay"></div>
+                        <div id="selectedEventsDisplay" class="selected-events-display"></div>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-large">
@@ -373,13 +279,13 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 EventVerse. All rights reserved. | Designed for Excellence</p>
     </footer>
 
-    <!-- EVENT DETAILS MODAL -->
-    <div class="modal" id="eventModal">
+    <!-- Event Details Modal -->
+    <div id="eventModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <div id="modalBody"></div>
