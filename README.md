@@ -5,8 +5,8 @@
 <h2>🛠️ Technologies Used</h2>
 <ul>
   <li>HTML5</li>
-  <li>CSS3 (Tailwind CSS for styling)</li>
-  <li>Vanilla JavaScript</li>
+  <li>CSS3</li>
+  <li>JavaScript</li>
 </ul>
 
 <h2>✨ Features</h2>
