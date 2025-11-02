@@ -296,7 +296,7 @@ function startCountdown() {
 // CALCULATE TOTAL PRIZE
 function calculateTotalPrize() {
   const total = events.reduce((sum, e) => sum + e.totalPrize, 0)
-  document.getElementById("totalPrize").textContent = "₹" + (total / 100000).toFixed(1).replace(/\.0$/, "") + ",00,000+"
+  document.getElementById("totalPrize").textContent = "₹" + (total / 100000).toFixed(1).replace(/\.0$/, "") + "Lakh+"
 }
 
 // RENDER EVENTS
