@@ -6,23 +6,23 @@
 
 <h2>✨ Core Features</h2>
 <ul>
-  <li><strong>High-Impact Home Page & Hero Section:</strong> Includes a stunning hero banner with welcome animation, smooth entry transition, and clear CTAs such as “View Schedule” and “Register Now.”</li>
+  <li><strong>High-Impact Home Page & Hero Section:</strong></li>
   
-  <li><strong>Interactive Event Catalog:</strong> Displays events as dynamic cards with visuals, short descriptions, and details. Allows <strong>search and filter</strong> functionality by category (Technical, Cultural, Gaming, Workshops) or date/time.</li>
+  <li><strong>Interactive Event Catalog:</strong></li>
   
-  <li><strong>Detailed Event Modals:</strong> Clicking on an event opens a beautiful modal or page showing a detailed description, prize pool, mock registration link, and organizer contact details.</li>
+  <li><strong>Detailed Event Modals:</strong></li>
   
-  <li><strong>Prize Pool Highlights:</strong> Each event prominently showcases its prize pool with a visually striking neon-glow effect that immediately grabs attention and encourages participation.</li>
+  <li><strong>Prize Pool Highlights:</strong></li>
   
-  <li><strong>Countdown Timer:</strong> A live countdown to the fest date (1st December 2025) builds excitement and engagement.</li>
+  <li><strong>Countdown Timer:</strong></li>
   
-  <li><strong>Search & Quick Access:</strong> A fast, intuitive search bar allows users to instantly locate specific events, boosting usability and efficiency.</li>
+  <li><strong>Search & Quick Access:</strong></li>
   
-  <li><strong>Dynamic Schedule Page:</strong> Interactive timeline layout displaying all event schedules in an organized, easy-to-read format. Filterable by day for convenience.</li>
+  <li><strong>Dynamic Schedule Page:</strong></li>
   
-  <li><strong>Contact & Registration Section:</strong> Includes organizer contacts, and a mock registration form with real-time client-side validation (valid email, empty field checks, success message).</li>
+  <li><strong>Contact & Registration Section:</strong></li>
   
-  <li><strong>Sound Effects & Microinteractions:</strong> Each button and action produces subtle, pleasant sound effects to give a <strong>festive, inclusive, and celebratory feel</strong> — enhancing user engagement without distraction.</li>
+  <li><strong>Sound Effects & Microinteractions:</strong></li>
   
   <li><strong>Accessibility First:</strong> The entire website is designed to be inclusive — featuring <strong>keyboard navigation</strong>, <strong>screen reader compatibility</strong>, <strong>semantic HTML</strong>, <strong>ARIA labels</strong>, and <strong>alt text</strong> for every image. High color contrast and readable fonts ensure it’s comfortable for all users.</li>
   
